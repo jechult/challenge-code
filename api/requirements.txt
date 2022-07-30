@@ -1,0 +1,11 @@
+click==7.1.2
+fastapi==0.62.0
+h11==0.11.0
+pydantic==1.7.3
+starlette==0.13.6
+uvicorn==0.13.0
+SQLAlchemy==1.4.39
+pandas==1.4.3
+python-multipart==0.0.5
+PyMySQL==1.0.2
+mysqlclient==2.1.1
