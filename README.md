@@ -41,12 +41,12 @@ Data ingestion process to load and store files in SQL Database.
 
 - To download the remote repository in local, run in terminal:
 
-    ```bash
+    ```shell
     git clone https://github.com/jechult/challenge-code.git
     ```
 - Once you have downloaded the repository, run the following command to build and deploy the containers (api and mysql):
 
-    ```bash
+    ```shell
     docker-compose up --build
     ```
 
@@ -54,14 +54,14 @@ Data ingestion process to load and store files in SQL Database.
 
 3.1 For testing purpose, use the following credentials:
 
-    ```
+    ```shell
     USERNAME = jechult
     PASSWORD = admin
     ```
 
 - As a first step, please authenticate on API using the credentials above by running the following command:
 
-    ```bash
+    ```shell
     curl -L -X POST 'http://localhost/login' \
     -F 'username=[USERNAME]' \
     -F 'password=[PASSWORD]'
@@ -73,13 +73,13 @@ Data ingestion process to load and store files in SQL Database.
 
 - If everything's OK, as a result, you'll get an access token like this:
 
-    ```bash
+    ```shell
     {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiamVjaHVsdCIsImV4cCI6MTY1OTI4OTYxN30.8hAm4rYXXgk3MHxICzeL33luxKcR5Aeyf3-KaMy5A8g","token_type":"bearer"}
     ```
 
 - Otherwise, you'll get the following message:
 
-    ```bash
+    ```shell
     {"detail":"Invalid credentials"}
     ```
 
@@ -94,7 +94,7 @@ careful when making requests to the different apis.
 - As you can see, previous data model has 3 tables which are regions, sources and trips. Before testing reporting requests, you
 must upload data to insert it into tables. To do that, you should run the following command:
 
-    ```bash
+    ```shell
     curl -L -X POST 'http://localhost/uploadfile' \
     -H 'Authorization: Bearer [ACCESS_TOKEN]' \
     -F 'table_name="[TABLE_NAME]"' \
@@ -108,7 +108,7 @@ must upload data to insert it into tables. To do that, you should run the follow
 
 3.3 In order to obtain the weekly average number of trips per region, run the following command:
 
-    ```bash
+    ```shell
     curl -L -X GET 'http://localhost/reporting/weekly' \
     -H 'accept: application/json' \
     -H 'Authorization: Bearer [ACCESS_TOKEN]'
@@ -116,7 +116,7 @@ must upload data to insert it into tables. To do that, you should run the follow
 
 - If everything's OK, you'll get this:
 
-    ```bash
+    ```shell
     {"Hamburg":16.8,"Prague":20.4,"Turin":22.8}
     ```
 
