@@ -23,6 +23,10 @@ Data ingestion process to load and store files in SQL Database.
 
 # Table of contents
 
+0. Trips data model
+
+<img src="https://github.com/jechult/challenge-code/blob/d70c3a5621351ce7d3b73de02d85f7de5168ec11/db/data_model.png" alt="Alt text" title="Trip data mode">
+
 1. 👩‍💻 Pre requisites
 
 - If not installed, download Docker Desktop (https://www.docker.com/products/docker-desktop/)
@@ -46,7 +50,7 @@ Data ingestion process to load and store files in SQL Database.
 
 For testing purpose, use the following credentials:
 
-    ```bash
+    ```
     USERNAME = jechult
     PASSWORD = admin
     ```
@@ -90,5 +94,4 @@ careful when making requests to the different apis.
     ```bash
     {"Hamburg":16.8,"Prague":20.4,"Turin":22.8}
     ```
-
 
