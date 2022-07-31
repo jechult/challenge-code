@@ -16,6 +16,10 @@ Data ingestion process to load and store files in SQL Database.
 │   ├── app                 # API source code
 │   ├── Dockerfile          # Config file to build a python container with api code
 │   └── requirements.txt    # Packages list for api environment
+├── test_files              # Set of files for test uploading process
+│   ├── regions.csv         # File which contains regions list
+│   ├── sources.csv         # File which contains sources list
+│   └── trips.csv           # File which contains trips list
 └── db                      # Database scripts folder
     └── init_sql.sql        # Initialization script after db container creation
 
@@ -35,12 +39,12 @@ Data ingestion process to load and store files in SQL Database.
 
 2. 🖥 Build and run application
 
-- In terminal, run:
+- To download the remote repository in local, run in terminal:
 
     ```bash
     git clone https://github.com/jechult/challenge-code.git
     ```
-- After cloning project repository, run:
+- Once you have downloaded the repository, run the following command to build and deploy the containers (api and mysql):
 
     ```bash
     docker-compose up --build
@@ -48,14 +52,14 @@ Data ingestion process to load and store files in SQL Database.
 
 3. 🧪 Test running application
 
-For testing purpose, use the following credentials:
+3.1 For testing purpose, use the following credentials:
 
     ```
     USERNAME = jechult
     PASSWORD = admin
     ```
 
-- Step 1: Authenticate on API using the credentials above by running the following command:
+- As a first step, please authenticate on API using the credentials above by running the following command:
 
     ```bash
     curl -X 'POST' \
@@ -80,6 +84,13 @@ For testing purpose, use the following credentials:
 - ✔ Once you are correctly authenticated, you'll be able to test the api. Please, save the obtained access token,
 you're going to need it for the following tests. ⚠ Warning: The obtained access token will expire in 30 minutes, so please be
 careful when making requests to the different apis.
+
+3.2 Before uploading any data, it's mandatory data files have the following structure:
+
+
+
+- As you can see, previous data model has 3 tables which are regions, sources and trips. Before testing reporting requests, you
+must upload data to insert it into tables.
 
 - In order to obtain the weekly average number of trips per region, run the following command:
 
