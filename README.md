@@ -52,7 +52,7 @@ Data ingestion process to load and store files in SQL Database.
 
 3. 🧪 Test running application
 
-3.1 For testing purpose, use the following credentials:
+- For testing purpose, use the following credentials:
 
     ```shell
     USERNAME = jechult
@@ -87,7 +87,7 @@ Data ingestion process to load and store files in SQL Database.
 you're going to need it for the following tests. ⚠ Warning: The obtained access token will expire in 30 minutes, so please be
 careful when making requests to the different apis.
 
-3.2 Before uploading any data, it's mandatory data files have the following structure:
+- Before uploading any data, it's mandatory data files have the following structure:
 
 <img src="https://github.com/jechult/challenge-code/blob/eb73157fde63ff683b54b7345299ae95d70efe56/test_files/files_structure.png" alt="Alt text" title="Test files structure">
 
@@ -106,7 +106,7 @@ must upload data to insert it into tables. To do that, you should run the follow
     - TABLE_NAME: table name which 3 possible values (trips, sources, regions)
     - FILE_PATH: path where file is stored. Example: /home/files/trips.csv
 
-3.3 In order to obtain the weekly average number of trips per region, run the following command:
+- In order to obtain the weekly average number of trips per region, run the following command:
 
     ```shell
     curl -L -X GET 'http://localhost/reporting/weekly' \
