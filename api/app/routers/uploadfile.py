@@ -16,6 +16,12 @@ def created_upload_file(
     print(current_user)
     print(table_name)
 
-    message = process_data(table_content, table_name)
+    try:
+
+        message = process_data(table_content, table_name)
+    
+    except:
+
+        return {'message': 'Sent file does not fit structure requirements'}
 
     return {'message': message}
