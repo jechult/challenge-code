@@ -29,7 +29,7 @@ Data ingestion process to load and store files in SQL Database.
 
 0. Trips data model
 
-<img src="https://github.com/jechult/challenge-code/blob/d70c3a5621351ce7d3b73de02d85f7de5168ec11/db/data_model.png" alt="Alt text" title="Trip data mode">
+<img src="https://github.com/jechult/challenge-code/blob/d70c3a5621351ce7d3b73de02d85f7de5168ec11/db/data_model.png" alt="Alt text" title="Trip data model">
 
 1. 👩‍💻 Pre requisites
 
@@ -62,12 +62,14 @@ Data ingestion process to load and store files in SQL Database.
 - As a first step, please authenticate on API using the credentials above by running the following command:
 
     ```bash
-    curl -X 'POST' \
-    'http://localhost/login' \
-    -H 'accept: application/json' \
-    -H 'Content-Type: application/x-www-form-urlencoded' \
-    -d 'grant_type=&username=[USERNAME]&password=[PASSWORD]&scope=&client_id=&client_secret='
+    curl -L -X POST 'http://localhost/login' \
+    -F 'username=[USERNAME]' \
+    -F 'password=[PASSWORD]'
     ```
+
+    Parameters:
+    - USERNAME: user displayed in 3.1
+    - PASSWORD: password displayed in 3.1
 
 - If everything's OK, as a result, you'll get an access token like this:
 
@@ -87,12 +89,24 @@ careful when making requests to the different apis.
 
 3.2 Before uploading any data, it's mandatory data files have the following structure:
 
-
+<img src="https://github.com/jechult/challenge-code/blob/eb73157fde63ff683b54b7345299ae95d70efe56/test_files/files_structure.png" alt="Alt text" title="Test files structure">
 
 - As you can see, previous data model has 3 tables which are regions, sources and trips. Before testing reporting requests, you
-must upload data to insert it into tables.
+must upload data to insert it into tables. To do that, you should run the following command:
 
-- In order to obtain the weekly average number of trips per region, run the following command:
+    ```bash
+    curl -L -X POST 'http://localhost/uploadfile' \
+    -H 'Authorization: Bearer [ACCESS_TOKEN]' \
+    -F 'table_name="[TABLE_NAME]"' \
+    -F 'table_content=@"[FILE_PATH]"'
+    ```
+
+    Parameters:
+    - ACCESS_TOKEN: obtained code in authentication process
+    - TABLE_NAME: table name which 3 possible values (trips, sources, regions)
+    - FILE_PATH: path where file is stored. Example: /home/files/trips.csv
+
+3.3 In order to obtain the weekly average number of trips per region, run the following command:
 
     ```bash
     curl -L -X GET 'http://localhost/reporting/weekly' \
