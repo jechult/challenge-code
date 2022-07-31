@@ -51,7 +51,7 @@ For testing purpose, use the following credentials:
     PASSWORD = admin
     ```
 
-- Step 1: Authenticate on API by running the following command:
+- Step 1: Authenticate on API using the credentials above by running the following command:
 
     ```bash
     curl -X 'POST' \
@@ -60,4 +60,35 @@ For testing purpose, use the following credentials:
     -H 'Content-Type: application/x-www-form-urlencoded' \
     -d 'grant_type=&username=[USERNAME]&password=[PASSWORD]&scope=&client_id=&client_secret='
     ```
+
+- If everything's OK, as a result, you'll get an access token like this:
+
+    ```bash
+    {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiamVjaHVsdCIsImV4cCI6MTY1OTI4OTYxN30.8hAm4rYXXgk3MHxICzeL33luxKcR5Aeyf3-KaMy5A8g","token_type":"bearer"}
+    ```
+
+- Otherwise, you'll get the following message:
+
+    ```bash
+    {"detail":"Invalid credentials"}
+    ```
+
+- ✔ Once you are correctly authenticated, you'll be able to test the api. Please, save the obtained access token,
+you're going to need it for the following tests. ⚠ Warning: The obtained access token will expire in 30 minutes, so please be
+careful when making requests to the different apis.
+
+- In order to obtain the weekly average number of trips per region, run the following command:
+
+    ```bash
+    curl -L -X GET 'http://localhost/reporting/weekly' \
+    -H 'accept: application/json' \
+    -H 'Authorization: Bearer [ACCESS_TOKEN]'
+    ```
+
+- If everything's OK, you'll get this:
+
+    ```bash
+    {"Hamburg":16.8,"Prague":20.4,"Turin":22.8}
+    ```
+
 
