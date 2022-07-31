@@ -2,8 +2,9 @@ from io import BytesIO
 from fastapi import UploadFile
 import pandas as pd
 from database import engine
+from datetime import datetime
 
-CHUNKSIZE = 100000
+CHUNKSIZE = 1000000
 
 def process_trips_data(df: pd.DataFrame):
 
@@ -61,7 +62,11 @@ def process_data(table_content: UploadFile, table_name: str):
 
     # itering content using a DataFrame list
 
+    start_datetime = datetime.now()
+
     dfIter = pd.read_csv(BytesIO(table_content.file.read()), chunksize = CHUNKSIZE)
+
+    row_count = 0
 
     if table_name in ('sources', 'regions'):
 
@@ -71,7 +76,16 @@ def process_data(table_content: UploadFile, table_name: str):
 
             df.to_sql(table_name, engine, index = False, if_exists = 'append')
 
-            return {'message': f'table {table_name} updated'}
+            row_count+=df.shape[0]
+
+            print(f'Commited row {row_count}')
+        
+        end_datetime = datetime.now()
+        elapsed_time = (end_datetime - start_datetime).total_seconds()
+
+        print(f'{row_count} rows were inserted in table {table_name} in {elapsed_time} seconds.')
+
+        return {'message': f'table {table_name} updated'}
     
     elif table_name == 'trips':
 
@@ -81,7 +95,16 @@ def process_data(table_content: UploadFile, table_name: str):
 
             df_aux.to_sql(table_name, engine, index = False, if_exists = 'append')
 
-            return {'message': f'table {table_name} updated'}
+            row_count+=df.shape[0]
+
+            print(f'Commited row {row_count}')
+        
+        end_datetime = datetime.now()
+        elapsed_time = (end_datetime - start_datetime).total_seconds()
+
+        print(f'{row_count} rows were inserted in table {table_name} in {elapsed_time} seconds.')
+
+        return {'message': f'table {table_name} updated'}
     
     else:
 
