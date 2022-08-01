@@ -97,6 +97,8 @@ careful when making requests to the different apis.
 
 <img src="https://github.com/jechult/challenge-code/blob/429bc5790386e4b638049f6ae4a97e7693b6f78e/test_files/files_structure.png" alt="Alt text" title="Test files structure">
 
+- ⚠⚠⚠ Because trips table has two foreigns key, it's mandatory to load first regions and sources tables.
+
 - As you can see, previous data model has 3 tables which are regions, sources and trips. Before testing reporting requests, you
 must upload data to insert it into tables. To do that, you should run the following command:
 
@@ -142,7 +144,7 @@ must upload data to insert it into tables. To do that, you should run the follow
 
 - Google Cloud Repository: Here, we will store source code related to the API
 - Google Cloud Storage: Its aim is to store different data files to trigger the API
-- Google Cloud Function: Once a user uploads a file in GCS bucket, Cloud Function will triggered to process the uploaded file. Then, it will make a connection with BigQuery in order to store the processed file data to tables
+- Google Cloud Function: Once a user uploads a file in GCS bucket, Cloud Function will triggered to process the uploaded file. Then, it will make a connection with BigQuery in order to store the processed data file to tables
 - Cloud Monitoring: Its aim is to monitor cloud function performance and get reports from quotas, requests, errors and so on.
 - Google Data Studio: It will allow us to create different dashboards from BigQuery data. With this, we can get important insights to
 improve our business in a technical and non-technical way
