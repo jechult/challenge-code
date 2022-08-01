@@ -145,6 +145,7 @@ must upload data to insert it into tables. To do that, you should run the follow
 - Google Cloud Repository: Here, we will store source code related to the API
 - Google Cloud Storage: Its aim is to store different data files to trigger the API
 - Google Cloud Function: Once a user uploads a file in GCS bucket, Cloud Function will triggered to process the uploaded file. Then, it will make a connection with BigQuery in order to store the processed data file to tables
+- BigQuery: Datawarehouse where we are going to store our data files into tables
 - Cloud Monitoring: Its aim is to monitor cloud function performance and get reports from quotas, requests, errors and so on.
 - Google Data Studio: It will allow us to create different dashboards from BigQuery data. With this, we can get important insights to
 improve our business in a technical and non-technical way
