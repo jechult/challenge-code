@@ -47,8 +47,8 @@ Data ingestion process to load and store files in SQL Database.
 - To download the remote repository in local, run in terminal:
 
     ```shell
-    cd challenge-code
     git clone https://github.com/jechult/challenge-code.git
+    cd challenge-code
     ```
 - Once you have downloaded the repository, run the following command to build and deploy the containers (api and mysql):
 
