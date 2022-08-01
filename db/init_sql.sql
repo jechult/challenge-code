@@ -31,4 +31,19 @@ CREATE TABLE IF NOT EXISTS trips (
     FOREIGN KEY (datasource_id) REFERENCES sources(id)
 );
 
+CREATE OR REPLACE VIEW trips_view AS
+SELECT
+    a.origin_x,
+    a.origin_y,
+    a.destination_x,
+    a.destination_y,
+    b.name_desc as region,
+    c.name_desc as datasource_id,
+    HOUR(a.trip_datetime) as trip_hour
+FROM trips a
+LEFT JOIN regions b
+ON a.region_id = b.id
+LEFT JOIN sources c
+ON a.datasource_id = c.id;
+
 GRANT ALL PRIVILEGES ON *.* TO 'jechu'@'%';
