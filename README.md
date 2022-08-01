@@ -18,7 +18,7 @@ Data ingestion process to load and store files in SQL Database.
 │   └── requirements.txt        # Packages list for api environment
 ├── test_files                  # Set of files for test uploading process
 │   ├── 100_million_test.png    # Image with loading stress proof
-│   ├── files_structure.png     # Image with tables structure
+│   ├── files_structure.png     # Image with data files structure
 │   ├── regions.csv             # File which contains regions list
 │   ├── sources.csv             # File which contains sources list
 │   └── trips.csv               # File which contains trips list
