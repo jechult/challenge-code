@@ -8,20 +8,23 @@ Data ingestion process to load and store files in SQL Database.
 ```
 
 .
-├── .gitignore              # Prevent staging of unnecessary files to git
-├── docker-compose.yml      # Config file to deploy both fastapi and mysql container
-├── bonus_sql.sql           # SQL queries to get results from bonus features
-├── README.md               # Project README
-├── api                     # API folder
-│   ├── app                 # API source code
-│   ├── Dockerfile          # Config file to build a python container with api code
-│   └── requirements.txt    # Packages list for api environment
-├── test_files              # Set of files for test uploading process
-│   ├── regions.csv         # File which contains regions list
-│   ├── sources.csv         # File which contains sources list
-│   └── trips.csv           # File which contains trips list
-└── db                      # Database scripts folder
-    └── init_sql.sql        # Initialization script after db container creation
+├── .gitignore                  # Prevent staging of unnecessary files to git
+├── docker-compose.yml          # Config file to deploy both fastapi and mysql container
+├── bonus_sql.sql               # SQL queries to get results from bonus features
+├── README.md                   # Project README
+├── api                         # API folder
+│   ├── app                     # API source code
+│   ├── Dockerfile              # Config file to build a python container with api code
+│   └── requirements.txt        # Packages list for api environment
+├── test_files                  # Set of files for test uploading process
+│   ├── 100_million_test.png    # Image with loading stress proof
+│   ├── files_structure.png     # Image with tables structure
+│   ├── regions.csv             # File which contains regions list
+│   ├── sources.csv             # File which contains sources list
+│   └── trips.csv               # File which contains trips list
+└── db                          # Database scripts folder
+    ├── data_model.png          # Tables data model for trips, regions and sources
+    └── init_sql.sql            # Initialization script after db container creation
 
 ```
 
