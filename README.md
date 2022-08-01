@@ -22,6 +22,8 @@ Data ingestion process to load and store files in SQL Database.
 │   ├── regions.csv             # File which contains regions list
 │   ├── sources.csv             # File which contains sources list
 │   └── trips.csv               # File which contains trips list
+├── cloud_sketchup              # 
+│   └── cloud_sketchup.png      # Cloud solution sketchup using GCP
 └── db                          # Database scripts folder
     ├── data_model.png          # Tables data model for trips, regions and sources
     └── init_sql.sql            # Initialization script after db container creation
