@@ -13,12 +13,23 @@ router = APIRouter(
 
 @router.post('/login')
 def login(user_credentials: OAuth2PasswordRequestForm = Depends()):
+
+    """This post request allows us to generate an access token for authentication
+    Args:
+        user_credentials: Credentiales to be compared with given them
+    Returns:
+        access_token: token code as a result of authentication request
+    """
+
+    # checking if filled credentials match with given them
     
     if user_credentials.username != USER or user_credentials.password != PASSWORD:
         raise HTTPException(
             status_code = status.HTTP_403_FORBIDDEN,
             detail = 'Invalid credentials'
         )
+
+    # creating an access token for authentication
     
     access_token = create_access_token(data = {"user_id": user_credentials.username})
     

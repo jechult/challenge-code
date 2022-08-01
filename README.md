@@ -96,7 +96,9 @@ must upload data to insert it into tables. To do that, you should run the follow
 
     ```shell
     curl -L -X POST 'http://localhost/uploadfile' \
+    -H 'accept: application/json' \
     -H 'Authorization: Bearer [ACCESS_TOKEN]' \
+    -H 'Content-Type: multipart/form-data' \
     -F 'table_name="[TABLE_NAME]"' \
     -F 'table_content=@"[FILE_PATH]"'
     ```
@@ -105,6 +107,12 @@ must upload data to insert it into tables. To do that, you should run the follow
     - ACCESS_TOKEN: obtained code in authentication process
     - TABLE_NAME: table name which 3 possible values (trips, sources, regions)
     - FILE_PATH: path where file is stored. Example: /home/files/trips.csv
+
+- Once the process ends, you'll see a message like this:
+
+    ```shell
+    {"message":"table trips updated"}
+    ```
 
 - In order to obtain the weekly average number of trips per region, run the following command:
 

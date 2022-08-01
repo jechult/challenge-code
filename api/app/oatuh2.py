@@ -15,6 +15,13 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 def create_access_token(data: dict):
 
+    """This function generates an access token once user is correctly authenticated
+    Args:
+        data: user data to be part of token generation
+    Returns:
+        access_token: token code generated from jwt library
+    """
+
     to_encode = data.copy()
 
     expire = datetime.utcnow() + timedelta(minutes = ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -25,6 +32,13 @@ def create_access_token(data: dict):
     return encoded_jwt
 
 def verify_access_token(token: str, credentials_exception):
+
+    """This function verify if access token is still valid
+    Args:
+        token: token code as a result of access token creation
+    Returns:
+        token_data: token id as a result of correct checking
+    """
 
     try:
 
@@ -46,6 +60,13 @@ def verify_access_token(token: str, credentials_exception):
 def get_current_user(
     token: str = Depends(oauth2_scheme)
 ):
+
+    """This function returns a 0 value is checking process is ok
+    Args:
+        token: token code as a result of access token creation
+    Returns:
+        message: 0 value as a result of correct checking
+    """
 
     credentials_exception = HTTPException(
         status_code = status.HTTP_401_UNAUTHORIZED,

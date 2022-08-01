@@ -13,7 +13,16 @@ def create_weekly_reporting(
     current_user: int = Depends(get_current_user)
 ):
 
+    """This get request computes weekly average trips per region
+    Args:
+        current_user: parameter to ensure user is correctly authenticated
+    Returns:
+        message: json format report with computed data
+    """
+
     print(current_user)
+
+    # querying mysql tables to get neccesary data
 
     query = '''
         SELECT
@@ -25,12 +34,14 @@ def create_weekly_reporting(
         ON a.region_id = b.id
     '''
 
+    # reading query into a dataframe
+
     df = pd.read_sql(
         query,
         con = engine
     )
 
-    print(df.head())
+    # grouping by year / week to compute the weekly average trips per region
 
     df['year_week'] = df['trip_datetime'].dt.strftime('%Y%W')
 
