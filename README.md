@@ -10,22 +10,17 @@ Data ingestion process to load and store files in SQL Database.
 .
 ├── .gitignore                  # Prevent staging of unnecessary files to git
 ├── docker-compose.yml          # Config file to deploy both fastapi and mysql container
-├── bonus_sql.sql               # SQL queries to get results from bonus features
 ├── README.md                   # Project README
 ├── api                         # API folder
 │   ├── app                     # API source code
 │   ├── Dockerfile              # Config file to build a python container with api code
 │   └── requirements.txt        # Packages list for api environment
 ├── test_files                  # Set of files for test uploading process
-│   ├── 100_million_test.png    # Image with loading stress proof
 │   ├── files_structure.png     # Image with data files structure
 │   ├── regions.csv             # File which contains regions list
 │   ├── sources.csv             # File which contains sources list
 │   └── trips.csv               # File which contains trips list
-├── cloud_sketchup              # 
-│   └── cloud_sketchup.png      # Cloud solution sketchup using GCP
 └── db                          # Database scripts folder
-    ├── data_model.png          # Tables data model for trips, regions and sources
     └── init_sql.sql            # Initialization script after db container creation
 
 ```
@@ -135,17 +130,3 @@ must upload data to insert it into tables. To do that, you should run the follow
     ```shell
     {"Hamburg":16.8,"Prague":20.4,"Turin":22.8}
     ```
-
-4. ☁ Cloud sketchup solution using Google Cloud Plaftorm
-
-<img src="https://github.com/jechult/challenge-code/blob/429bc5790386e4b638049f6ae4a97e7693b6f78e/cloud_sketchup/sketchup.png" alt="Alt text" title="GCP Solution">
-
-4.1. What services would be use? How would they work?
-
-- Google Cloud Repository: Here, we will store source code related to the API
-- Google Cloud Storage: Its aim is to store different data files to trigger the API
-- Google Cloud Function: Once a user uploads a file in GCS bucket, Cloud Function will triggered to process the uploaded file. Then, it will make a connection with BigQuery in order to store the processed data file to tables
-- BigQuery: Datawarehouse where we are going to store our data files into tables
-- Cloud Monitoring: Its aim is to monitor cloud function performance and get reports from quotas, requests, errors and so on.
-- Google Data Studio: It will allow us to create different dashboards from BigQuery data. With this, we can get important insights to
-improve our business in a technical and non-technical way
